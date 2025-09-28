@@ -18,7 +18,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const generateStudentData = () => {
+type Student = {
+  id: number;
+  name: string;
+  age: number;
+  gpa: number;
+  major: string;
+  year: number;
+  credits: number;
+};
+
+const generateStudentData = (): Student[] => {
   const names = [
     "Alice Johnson",
     "Bob Smith",
@@ -99,10 +109,13 @@ const generateStudentData = () => {
   }));
 };
 
-const sortDictionariesByKey = (data: any[], key: string, ascending = true) => {
+function sortDictionariesByKey<
+  T extends Record<string, string | number>,
+  K extends keyof T
+>(data: T[], key: K, ascending = true): T[] {
   return [...data].sort((a, b) => {
-    const aValue = a[key];
-    const bValue = b[key];
+    const aValue = a[key] as T[K];
+    const bValue = b[key] as T[K];
 
     if (typeof aValue === "string" && typeof bValue === "string") {
       return ascending
@@ -111,25 +124,25 @@ const sortDictionariesByKey = (data: any[], key: string, ascending = true) => {
     }
 
     if (ascending) {
-      return aValue - bValue;
+      return (aValue as unknown as number) - (bValue as unknown as number);
     } else {
-      return bValue - aValue;
+      return (bValue as unknown as number) - (aValue as unknown as number);
     }
   });
-};
+}
 
 export default function Lab1() {
-  const [studentData] = useState(() => generateStudentData());
-  const [sortedData, setSortedData] = useState(studentData);
-  const [sortKey, setSortKey] = useState<string>("");
+  const [studentData] = useState<Student[]>(() => generateStudentData());
+  const [sortedData, setSortedData] = useState<Student[]>(studentData);
+  const [sortKey, setSortKey] = useState<keyof Student | "">("");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
   const handleSort = () => {
     if (!sortKey) return;
 
-    const sorted = sortDictionariesByKey(
+    const sorted = sortDictionariesByKey<Student, keyof Student>(
       studentData,
-      sortKey,
+      sortKey as keyof Student,
       sortOrder === "asc"
     );
     setSortedData(sorted);
@@ -174,7 +187,12 @@ export default function Lab1() {
                 <label className="text-sm font-medium mb-2 block">
                   Сортировать по ключу
                 </label>
-                <Select value={sortKey} onValueChange={setSortKey}>
+                <Select
+                  value={sortKey}
+                  onValueChange={(value: string) =>
+                    setSortKey(value as keyof Student)
+                  }
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Выберите ключ для сортировки" />
                   </SelectTrigger>
