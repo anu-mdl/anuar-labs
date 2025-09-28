@@ -1,0 +1,103 @@
+import Link from "next/link";
+
+const labProjects = [
+  {
+    number: 1,
+    title: "Алгоритмы сортировки",
+    description:
+      "Создайте функцию для сортировки списка словарей по значениям определенного ключа в каждом словаре.",
+  },
+  //   {
+  //     number: 2,
+  //     title: "Sorting and Searching Algorithms",
+  //     description:
+  //       "Implementation of bubble sort, quick sort, binary search, and linear search",
+  //   },
+  //   {
+  //     number: 3,
+  //     title: "Stack and Queue Implementation",
+  //     description:
+  //       "Building stack and queue data structures with practical applications",
+  //   },
+  //   {
+  //     number: 4,
+  //     title: "Binary Trees and Traversal",
+  //     description:
+  //       "Tree structures, insertion, deletion, and traversal algorithms",
+  //   },
+  //   {
+  //     number: 5,
+  //     title: "Graph Theory and Algorithms",
+  //     description: "Graph representation, BFS, DFS, and shortest path algorithms",
+  //   },
+  //   {
+  //     number: 6,
+  //     title: "Hash Tables and Collision Handling",
+  //     description:
+  //       "Hash function implementation and collision resolution techniques",
+  //   },
+];
+
+export function LabMenu() {
+  return (
+    <div className="max-w-4xl mx-auto px-6 py-16">
+      <div className="mb-16">
+        <h1 className="text-4xl font-light text-foreground mb-4 text-balance">
+          Лабораторные проекты
+        </h1>
+        <p className="text-lg text-muted-foreground font-light leading-relaxed">
+          Коллекция лабораторных проектов для учебных заведений и курсов в
+          Университете Карагандинский технический университет имени А.С.
+          Сагинова
+        </p>
+      </div>
+
+      <div className="space-y-1">
+        {labProjects.map((lab) => (
+          <Link
+            key={lab.number}
+            href={`/lab-${lab.number}`}
+            className="group block border-b border-border last:border-b-0 py-6 transition-all duration-200 hover:bg-accent/50"
+          >
+            <div className="flex items-start justify-between gap-8 pl-2">
+              <div className="flex-1">
+                <div className="flex items-baseline gap-3 mb-2">
+                  <span className="text-sm font-mono text-muted-foreground">
+                    Lab {lab.number}
+                  </span>
+                  <h2 className="text-xl font-light text-foreground group-hover:text-primary transition-colors">
+                    {lab.title}
+                  </h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  {lab.description}
+                </p>
+              </div>
+              <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity pr-6">
+                <svg
+                  className="w-5 h-5 text-muted-foreground"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      <div className="mt-16 pt-8 border-t border-border">
+        <p className="text-sm text-muted-foreground font-light">
+          Кафедра ИВС • Академический год 2025-2026
+        </p>
+      </div>
+    </div>
+  );
+}
