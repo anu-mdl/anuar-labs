@@ -3,39 +3,27 @@ import Link from "next/link";
 const labProjects = [
   {
     number: 1,
-    title: "Алгоритмы сортировки",
+    title: "Сортировка",
     description:
       "Создайте функцию для сортировки списка словарей по значениям определенного ключа в каждом словаре.",
   },
-  //   {
-  //     number: 2,
-  //     title: "Sorting and Searching Algorithms",
-  //     description:
-  //       "Implementation of bubble sort, quick sort, binary search, and linear search",
-  //   },
-  //   {
-  //     number: 3,
-  //     title: "Stack and Queue Implementation",
-  //     description:
-  //       "Building stack and queue data structures with practical applications",
-  //   },
-  //   {
-  //     number: 4,
-  //     title: "Binary Trees and Traversal",
-  //     description:
-  //       "Tree structures, insertion, deletion, and traversal algorithms",
-  //   },
-  //   {
-  //     number: 5,
-  //     title: "Graph Theory and Algorithms",
-  //     description: "Graph representation, BFS, DFS, and shortest path algorithms",
-  //   },
-  //   {
-  //     number: 6,
-  //     title: "Hash Tables and Collision Handling",
-  //     description:
-  //       "Hash function implementation and collision resolution techniques",
-  //   },
+  {
+    number: 2,
+    title: "Динамическое программирование",
+    description: "Найти n-й элемент ряда Фибоначчи.",
+  },
+  {
+    number: 3,
+    title: "Стек и очереди",
+    description:
+      "Элементы целочисленного массива записать в очередь. Написать функцию извлечения элементов из очереди до тех пор, пока первый элемент очереди не станет четным.",
+  },
+  {
+    number: 4,
+    title: "Графы",
+    description:
+      "Напишите функцию для поиска кратчайшего пути между двумя вершинами графа, используя алгоритм A*.",
+  },
 ];
 
 export function LabMenu() {
@@ -56,7 +44,7 @@ export function LabMenu() {
         {labProjects.map((lab) => (
           <Link
             key={lab.number}
-            href={`/lab-${lab.number}`}
+            href={`labs/lab-${lab.number}`}
             className="group block border-b border-border last:border-b-0 py-6 transition-all duration-200 hover:bg-accent/50"
           >
             <div className="flex items-start justify-between gap-8 pl-2">
