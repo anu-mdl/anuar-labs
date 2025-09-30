@@ -128,110 +128,109 @@ export default function Lab3() {
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Menu
+          Назад в меню
         </Link>
 
         <div className="mb-12">
           <h1 className="text-4xl font-bold mb-3 text-foreground">
-            Lab 3: Stack and Queue
+            Лабораторная работа №3: Стек и Очередь
           </h1>
           <p className="text-lg text-muted-foreground">
-            Understanding LIFO and FIFO data structures
+            Понимание структур данных LIFO и FIFO
           </p>
         </div>
 
         <div className="space-y-8">
-          {/* Theoretical Part */}
+          {/* Теоретическая часть */}
           <Card>
             <CardHeader>
-              <CardTitle>Theoretical Part</CardTitle>
+              <CardTitle>Теоретическая часть</CardTitle>
               <CardDescription>
-                Understanding Stack and Queue data structures
+                Изучение структур данных Стек и Очередь
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
                 <h3 className="text-xl font-semibold mb-3 text-foreground">
-                  Stack (LIFO - Last In, First Out)
+                  Стек (LIFO — Last In, First Out / Последним пришёл — первым
+                  вышел)
                 </h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  A stack is one of the simplest data structures, representing
-                  more of a limitation of a simple array than an extension of
-                  it. A classic stack supports only three operations:
+                  Стек — одна из простейших структур данных, представляющая
+                  скорее ограничение массива, чем его расширение. Классический
+                  стек поддерживает только три операции:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
                   <li>
-                    <strong>Push:</strong> Add an element to the stack
-                    (Complexity: O(1))
+                    <strong>Push:</strong> Добавить элемент в стек (Сложность:
+                    O(1))
                   </li>
                   <li>
-                    <strong>Pop:</strong> Remove an element from the stack
-                    (Complexity: O(1))
+                    <strong>Pop:</strong> Удалить элемент из стека (Сложность:
+                    O(1))
                   </li>
                   <li>
-                    <strong>IsEmpty:</strong> Check if the stack is empty
-                    (Complexity: O(1))
+                    <strong>IsEmpty:</strong> Проверить, пуст ли стек
+                    (Сложность: O(1))
                   </li>
                 </ul>
                 <p className="text-muted-foreground leading-relaxed mt-4">
-                  An analogy with a glass of cookies is often used to explain
-                  how a stack works. Imagine that there are several cookies at
-                  the bottom of your glass. You can put another piece on top or
-                  take the one that is already on top. The rest of the pieces
-                  are covered by the top one, and you know nothing about them.
-                  The abbreviation <strong>LIFO (Last In, First Out)</strong> is
-                  often used to describe a stack, emphasizing that the element
-                  that was added to the stack last will be removed from it
-                  first.
+                  Для объяснения работы стека часто используют аналогию со
+                  стаканом печенья. Представьте, что на дне стакана лежат
+                  несколько печений. Вы можете положить новое сверху или взять
+                  то, что уже лежит сверху. Остальные печенья скрыты под
+                  верхним, и вы о них ничего не знаете. Аббревиатура{" "}
+                  <strong>LIFO</strong> подчёркивает, что элемент, добавленный в
+                  стек последним, будет удалён первым.
                 </p>
               </div>
 
               <div className="border-t pt-6">
                 <h3 className="text-xl font-semibold mb-3 text-foreground">
-                  Queue (FIFO - First In, First Out)
+                  Очередь (FIFO — First In, First Out / Первым пришёл — первым
+                  вышел)
                 </h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  A queue supports the same set of operations as a stack, but
-                  has the opposite semantics. The abbreviation{" "}
-                  <strong>FIFO (First In, First Out)</strong> is used to
-                  describe a queue, since the first element added to the queue
-                  is the first to be removed from it. The name of this structure
-                  speaks for itself: the principle of operation is the same as
-                  for ordinary queues in a store or at the post office.
+                  Очередь поддерживает тот же набор операций, что и стек, но
+                  имеет противоположную семантику. Аббревиатура{" "}
+                  <strong>FIFO</strong> означает, что первый добавленный в
+                  очередь элемент будет извлечён первым. Название структуры
+                  говорит само за себя: принцип её работы такой же, как у
+                  обычных очередей в магазине или на почте.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  The implementation of a queue is similar to the implementation
-                  of a stack, but this time two pointers are needed: for the
-                  first element of the queue (the "head") and the last (the
-                  "tail").
+                  Реализация очереди похожа на реализацию стека, но здесь нужны
+                  два указателя: на первый элемент очереди («голова») и на
+                  последний («хвост»).
                 </p>
               </div>
             </CardContent>
           </Card>
 
-          {/* Practical Part */}
+          {/* Практическая часть */}
           <Card>
             <CardHeader>
-              <CardTitle>Practical Part</CardTitle>
+              <CardTitle>Практическая часть</CardTitle>
               <CardDescription>
-                Extract elements from queue until the first element becomes even
+                Извлечение элементов из очереди до тех пор, пока первый элемент
+                не станет чётным
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
                 <label className="block text-sm font-medium mb-2 text-foreground">
-                  Enter comma-separated integers:
+                  Введите целые числа через запятую:
                 </label>
                 <div className="flex gap-3">
                   <Input
                     type="text"
                     value={inputArray}
                     onChange={(e) => setInputArray(e.target.value)}
-                    placeholder="e.g., 1,3,5,7,9,4,6,8"
+                    placeholder="например, 1,3,5,7,9,4,6,8"
                     className="flex-1"
                   />
                   <Button onClick={handleInitializeQueue}>
-                    Initialize Queue
+                    Инициализировать очередь
                   </Button>
                 </div>
               </div>
@@ -240,7 +239,7 @@ export default function Lab3() {
                 <div className="space-y-4">
                   <div className="p-4 bg-muted/50 rounded-lg">
                     <h4 className="text-sm font-semibold mb-2 text-foreground">
-                      Current Queue:
+                      Текущая очередь:
                     </h4>
                     <div className="flex gap-2 flex-wrap">
                       {queue.map((num, idx) => (
@@ -257,12 +256,12 @@ export default function Lab3() {
                       ))}
                     </div>
                     <p className="text-xs text-muted-foreground mt-2">
-                      Head (front) → Tail (back)
+                      Голова (начало) → Хвост (конец)
                     </p>
                   </div>
 
                   <Button onClick={handleExtractUntilEven} className="w-full">
-                    Extract Until First Even Element
+                    Извлекать до первого чётного элемента
                   </Button>
                 </div>
               )}
@@ -271,7 +270,7 @@ export default function Lab3() {
                 <div className="space-y-4">
                   <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
                     <h4 className="text-sm font-semibold mb-2 text-foreground">
-                      Extracted Elements:
+                      Извлечённые элементы:
                     </h4>
                     <div className="flex gap-2 flex-wrap">
                       {extracted.map((num, idx) => (
@@ -287,7 +286,7 @@ export default function Lab3() {
 
                   <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
                     <h4 className="text-sm font-semibold mb-2 text-foreground">
-                      Remaining Queue:
+                      Оставшаяся очередь:
                     </h4>
                     {remainingQueue.length > 0 ? (
                       <div className="flex gap-2 flex-wrap">
@@ -305,7 +304,7 @@ export default function Lab3() {
                         ))}
                       </div>
                     ) : (
-                      <p className="text-muted-foreground">Queue is empty</p>
+                      <p className="text-muted-foreground">Очередь пуста</p>
                     )}
                   </div>
                 </div>
@@ -314,7 +313,7 @@ export default function Lab3() {
               {log.length > 0 && (
                 <div className="p-4 bg-muted/30 rounded-lg border">
                   <h4 className="text-sm font-semibold mb-2 text-foreground">
-                    Execution Log:
+                    Журнал выполнения:
                   </h4>
                   <div className="space-y-1 font-mono text-sm">
                     {log.map((entry, idx) => (
@@ -328,42 +327,41 @@ export default function Lab3() {
             </CardContent>
           </Card>
 
-          {/* Implementation Details */}
+          {/* Детали реализации */}
           <Card>
             <CardHeader>
-              <CardTitle>Implementation Details</CardTitle>
+              <CardTitle>Детали реализации</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
                 <h4 className="font-semibold mb-2 text-foreground">
-                  Queue Class
+                  Класс Очередь
                 </h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  The Queue class uses two pointers (head and tail) to
-                  efficiently manage elements. Enqueue adds elements at the
-                  tail, while dequeue removes from the head.
+                  Класс Очередь использует два указателя (голову и хвост) для
+                  эффективного управления элементами. Операция enqueue добавляет
+                  элементы в хвост, а dequeue — удаляет из головы.
                 </p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2 text-foreground">
-                  Extract Until Even Algorithm
+                  Алгоритм «Извлекать до чётного»
                 </h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  The function continuously checks the first element (head) of
-                  the queue. If it's odd, the element is dequeued and added to
-                  the extracted list. This continues until an even number is
-                  found at the head or the queue becomes empty.
+                  Функция непрерывно проверяет первый элемент (голову) очереди.
+                  Если он нечётный, элемент удаляется (dequeue) и добавляется в
+                  список извлечённых. Это продолжается до тех пор, пока на
+                  голове не окажется чётное число или очередь не опустеет.
                 </p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2 text-foreground">
-                  Time Complexity
+                  Временная сложность
                 </h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Each operation (enqueue, dequeue, peek) has O(1) complexity.
-                  The extraction function has O(n) complexity in the worst case,
-                  where n is the number of elements before the first even
-                  number.
+                  Каждая операция (enqueue, dequeue, peek) имеет сложность O(1).
+                  Функция извлечения имеет сложность O(n) в худшем случае, где n
+                  — количество элементов до первого чётного числа.
                 </p>
               </div>
             </CardContent>

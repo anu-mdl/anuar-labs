@@ -122,68 +122,66 @@ export default function Lab2() {
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Menu
+          Назад в меню
         </Link>
 
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2 text-balance">
-            Lab 2: Dynamic Programming & Optimization
+            Лабораторная работа №2: Динамическое программирование и оптимизация
           </h1>
           <p className="text-muted-foreground text-lg">
-            Exploring dynamic programming and branch & bound methods through
-            Fibonacci sequence
+            Изучение динамического программирования и метода ветвей и границ на
+            примере последовательности Фибоначчи
           </p>
         </div>
 
         <Tabs defaultValue="theory" className="space-y-6">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="theory">Theoretical Part</TabsTrigger>
-            <TabsTrigger value="practical">
-              Practical Implementation
-            </TabsTrigger>
+            <TabsTrigger value="theory">Теоретическая часть</TabsTrigger>
+            <TabsTrigger value="practical">Практическая часть</TabsTrigger>
           </TabsList>
 
           <TabsContent value="theory" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Dynamic Programming (DP)</CardTitle>
+                <CardTitle>Динамическое программирование (DP)</CardTitle>
                 <CardDescription>
-                  An optimization method for solving complex problems
+                  Метод оптимизации для решения сложных задач
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="leading-relaxed">
-                  Dynamic programming is an optimization method based on
-                  breaking down a complex problem into simpler subproblems. Its
-                  main idea is to store the solutions to already solved
-                  subproblems to prevent repeated calculations, thereby reducing
-                  the complexity of the problem.
+                  Динамическое программирование — это метод оптимизации,
+                  основанный на разбиении сложной задачи на более простые
+                  подзадачи. Основная идея заключается в сохранении решений уже
+                  решённых подзадач, чтобы избежать повторных вычислений и тем
+                  самым снизить сложность задачи.
                 </p>
 
                 <div className="bg-muted/50 p-4 rounded-lg space-y-2">
-                  <h4 className="font-semibold">Key Properties:</h4>
+                  <h4 className="font-semibold">Ключевые свойства:</h4>
                   <ul className="list-disc list-inside space-y-1 text-sm">
                     <li>
-                      <strong>Optimal Substructure:</strong> The solution to the
-                      problem depends on the solutions to its subproblems
+                      <strong>Оптимальная подструктура:</strong> решение задачи
+                      зависит от решений её подзадач
                     </li>
                     <li>
-                      <strong>Overlapping Subproblems:</strong> The same
-                      subproblems are solved multiple times
+                      <strong>Перекрывающиеся подзадачи:</strong> одни и те же
+                      подзадачи решаются многократно
                     </li>
                   </ul>
                 </div>
 
                 <div className="bg-muted/50 p-4 rounded-lg space-y-2">
-                  <h4 className="font-semibold">Two Main Approaches:</h4>
+                  <h4 className="font-semibold">Два основных подхода:</h4>
                   <ul className="list-disc list-inside space-y-1 text-sm">
                     <li>
-                      <strong>Memoization (Top-Down):</strong> Recursive
-                      approach with caching of results
+                      <strong>Мемоизация (сверху вниз):</strong> рекурсивный
+                      подход с кэшированием результатов
                     </li>
                     <li>
-                      <strong>Tabulation (Bottom-Up):</strong> Iterative
-                      approach building solutions from base cases
+                      <strong>Табуляция (снизу вверх):</strong> итеративный
+                      подход, строящий решения от базовых случаев
                     </li>
                   </ul>
                 </div>
@@ -192,38 +190,38 @@ export default function Lab2() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Branch and Bound Method</CardTitle>
+                <CardTitle>Метод ветвей и границ</CardTitle>
                 <CardDescription>
-                  Solving combinatorial optimization problems efficiently
+                  Эффективное решение задач комбинаторной оптимизации
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="leading-relaxed">
-                  The branch and bound method is an approach to solving
-                  combinatorial optimization problems that uses a complete
-                  decision tree but avoids exhaustive search by pruning
-                  unprofitable branches.
+                  Метод ветвей и границ — это подход к решению задач
+                  комбинаторной оптимизации, который использует дерево решений,
+                  но избегает полного перебора за счёт отсечения нерентабельных
+                  ветвей.
                 </p>
 
                 <div className="bg-muted/50 p-4 rounded-lg space-y-2">
-                  <h4 className="font-semibold">Core Concepts:</h4>
+                  <h4 className="font-semibold">Основные концепции:</h4>
                   <ul className="list-disc list-inside space-y-1 text-sm">
                     <li>
-                      <strong>Branching:</strong> Dividing the problem into
-                      subproblems
+                      <strong>Разветвление:</strong> деление задачи на подзадачи
                     </li>
                     <li>
-                      <strong>Bounding:</strong> Determining whether to continue
-                      exploring a branch or prune it based on current evaluation
+                      <strong>Ограничение:</strong> решение о продолжении
+                      исследования ветви или её отсечении на основе текущей
+                      оценки
                     </li>
                   </ul>
                 </div>
 
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  This method is particularly useful for optimization problems
-                  where we need to find the best solution among many
-                  possibilities, such as the traveling salesman problem,
-                  knapsack problem, or job scheduling.
+                  Этот метод особенно полезен для оптимизационных задач, где
+                  необходимо найти лучшее решение среди множества вариантов,
+                  например задачи коммивояжёра, задачи о рюкзаке или
+                  планирования работ.
                 </p>
               </CardContent>
             </Card>
@@ -232,16 +230,16 @@ export default function Lab2() {
           <TabsContent value="practical" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Fibonacci Sequence Calculator</CardTitle>
+                <CardTitle>Калькулятор последовательности Фибоначчи</CardTitle>
                 <CardDescription>
-                  Find the nth element using different approaches
+                  Найдите n-й элемент разными методами
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <label htmlFor="n-input" className="text-sm font-medium">
-                      Enter n (position in Fibonacci sequence):
+                      Введите n (позиция в последовательности Фибоначчи):
                     </label>
                     <Input
                       id="n-input"
@@ -249,14 +247,14 @@ export default function Lab2() {
                       min="0"
                       value={n}
                       onChange={(e) => setN(e.target.value)}
-                      placeholder="Enter a number"
+                      placeholder="Введите число"
                       className="max-w-xs"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium">
-                      Select Method:
+                      Выберите метод:
                     </label>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       <Button
@@ -264,7 +262,7 @@ export default function Lab2() {
                         onClick={() => setMethod("naive")}
                         className="justify-start"
                       >
-                        Naive Recursion (n ≤ 40)
+                        Наивная рекурсия (n ≤ 40)
                       </Button>
                       <Button
                         variant={
@@ -273,7 +271,7 @@ export default function Lab2() {
                         onClick={() => setMethod("dp-memoization")}
                         className="justify-start"
                       >
-                        DP - Memoization
+                        DP — Мемоизация
                       </Button>
                       <Button
                         variant={
@@ -282,14 +280,14 @@ export default function Lab2() {
                         onClick={() => setMethod("dp-tabulation")}
                         className="justify-start"
                       >
-                        DP - Tabulation
+                        DP — Табуляция
                       </Button>
                       <Button
                         variant={method === "iterative" ? "default" : "outline"}
                         onClick={() => setMethod("iterative")}
                         className="justify-start"
                       >
-                        Iterative (Space-Optimized)
+                        Итеративный (оптимизация по памяти)
                       </Button>
                     </div>
                   </div>
@@ -298,7 +296,7 @@ export default function Lab2() {
                     onClick={calculateFibonacci}
                     className="w-full md:w-auto"
                   >
-                    Calculate Fibonacci
+                    Вычислить Фибоначчи
                   </Button>
                 </div>
 
@@ -306,7 +304,7 @@ export default function Lab2() {
                   <div className="bg-muted/50 p-6 rounded-lg space-y-2">
                     <div className="flex items-baseline gap-2">
                       <span className="text-sm font-medium text-muted-foreground">
-                        Result:
+                        Результат:
                       </span>
                       <span className="text-2xl font-bold font-mono">
                         {result}
@@ -315,7 +313,7 @@ export default function Lab2() {
                     {executionTime && (
                       <div className="flex items-baseline gap-2">
                         <span className="text-sm font-medium text-muted-foreground">
-                          Execution Time:
+                          Время выполнения:
                         </span>
                         <span className="text-lg font-mono">
                           {executionTime}
@@ -326,23 +324,23 @@ export default function Lab2() {
                 )}
 
                 <div className="bg-muted/50 p-4 rounded-lg space-y-2">
-                  <h4 className="font-semibold text-sm">Method Comparison:</h4>
+                  <h4 className="font-semibold text-sm">Сравнение методов:</h4>
                   <ul className="text-sm space-y-1 text-muted-foreground">
                     <li>
-                      <strong>Naive:</strong> O(2ⁿ) time - exponential, very
-                      slow for large n
+                      <strong>Наивный:</strong> O(2ⁿ) по времени —
+                      экспоненциальный, очень медленный для больших n
                     </li>
                     <li>
-                      <strong>Memoization:</strong> O(n) time, O(n) space -
-                      efficient with recursion
+                      <strong>Мемоизация:</strong> O(n) по времени, O(n) по
+                      памяти — эффективен с рекурсией
                     </li>
                     <li>
-                      <strong>Tabulation:</strong> O(n) time, O(n) space -
-                      iterative bottom-up approach
+                      <strong>Табуляция:</strong> O(n) по времени, O(n) по
+                      памяти — итеративный подход снизу вверх
                     </li>
                     <li>
-                      <strong>Iterative:</strong> O(n) time, O(1) space - most
-                      space-efficient
+                      <strong>Итеративный:</strong> O(n) по времени, O(1) по
+                      памяти — наиболее эффективный по памяти
                     </li>
                   </ul>
                 </div>

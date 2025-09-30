@@ -117,12 +117,11 @@ export default function Lab4() {
             className="mb-4"
             onClick={() => window.history.back()}
           >
-            ← Back to Menu
+            ← Назад к меню
           </Button>
-          <h1 className="text-4xl font-bold mb-2">Lab 4: Graph Algorithms</h1>
+          <h1 className="text-4xl font-bold mb-2">Лабораторная 4: Алгоритмы на графах</h1>
           <p className="text-muted-foreground">
-            Explore graph representations, properties, and algorithms including
-            A* and MST
+            Изучайте представления графов, их свойства и алгоритмы, включая A* и МОД
           </p>
         </div>
 
@@ -131,12 +130,12 @@ export default function Lab4() {
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Graph Configuration</CardTitle>
-                <CardDescription>Define your graph structure</CardDescription>
+                <CardTitle>Конфигурация графа</CardTitle>
+                <CardDescription>Определите структуру графа</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <Label htmlFor="vertices">Number of Vertices</Label>
+                  <Label htmlFor="vertices">Количество вершин</Label>
                   <Input
                     id="vertices"
                     type="number"
@@ -150,7 +149,7 @@ export default function Lab4() {
                 </div>
 
                 <div>
-                  <Label>Representation Type</Label>
+                  <Label>Тип представления</Label>
                   <div className="flex gap-2 mt-2">
                     <Button
                       variant={
@@ -161,7 +160,7 @@ export default function Lab4() {
                       onClick={() => setRepresentation("adjacency-list")}
                       className="flex-1"
                     >
-                      Adjacency List
+                      Список смежности
                     </Button>
                     <Button
                       variant={
@@ -172,17 +171,17 @@ export default function Lab4() {
                       onClick={() => setRepresentation("adjacency-matrix")}
                       className="flex-1"
                     >
-                      Adjacency Matrix
+                      Матрица смежности
                     </Button>
                   </div>
                 </div>
 
                 <div className="border-t pt-4">
-                  <Label className="mb-2 block">Add Edge</Label>
+                  <Label className="mb-2 block">Добавить ребро</Label>
                   <div className="grid grid-cols-3 gap-2">
                     <div>
                       <Label htmlFor="from" className="text-xs">
-                        From
+                        Из
                       </Label>
                       <Input
                         id="from"
@@ -200,7 +199,7 @@ export default function Lab4() {
                     </div>
                     <div>
                       <Label htmlFor="to" className="text-xs">
-                        To
+                        В
                       </Label>
                       <Input
                         id="to"
@@ -218,7 +217,7 @@ export default function Lab4() {
                     </div>
                     <div>
                       <Label htmlFor="weight" className="text-xs">
-                        Weight
+                        Вес
                       </Label>
                       <Input
                         id="weight"
@@ -235,12 +234,12 @@ export default function Lab4() {
                     </div>
                   </div>
                   <Button onClick={addEdge} className="w-full mt-2">
-                    Add Edge
+                    Добавить ребро
                   </Button>
                 </div>
 
                 <div>
-                  <Label className="mb-2 block">Edges ({edges.length})</Label>
+                  <Label className="mb-2 block">Ребра ({edges.length})</Label>
                   <div className="max-h-40 overflow-y-auto space-y-1">
                     {edges.map((edge, idx) => (
                       <div
@@ -248,7 +247,7 @@ export default function Lab4() {
                         className="flex items-center justify-between bg-muted p-2 rounded text-sm"
                       >
                         <span>
-                          {edge.from} → {edge.to} (weight: {edge.weight})
+                          {edge.from} → {edge.to} (вес: {edge.weight})
                         </span>
                         <Button
                           variant="ghost"
@@ -264,7 +263,7 @@ export default function Lab4() {
 
                 <Button onClick={buildGraph} className="w-full" size="lg">
                   <Network className="mr-2 h-4 w-4" />
-                  Build Graph
+                  Построить граф
                 </Button>
               </CardContent>
             </Card>
@@ -274,15 +273,15 @@ export default function Lab4() {
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Graph Operations</CardTitle>
-                <CardDescription>Run algorithms and checks</CardDescription>
+                <CardTitle>Операции с графом</CardTitle>
+                <CardDescription>Запуск алгоритмов и проверок</CardDescription>
               </CardHeader>
               <CardContent>
                 <Tabs defaultValue="properties">
                   <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="properties">Properties</TabsTrigger>
-                    <TabsTrigger value="path">Shortest Path</TabsTrigger>
-                    <TabsTrigger value="mst">MST</TabsTrigger>
+                    <TabsTrigger value="properties">Свойства</TabsTrigger>
+                    <TabsTrigger value="path">Кратчайший путь</TabsTrigger>
+                    <TabsTrigger value="mst">МОД</TabsTrigger>
                   </TabsList>
 
                   <TabsContent value="properties" className="space-y-4">
@@ -292,7 +291,7 @@ export default function Lab4() {
                         disabled={!graph}
                         className="w-full"
                       >
-                        Check Completeness
+                        Проверить полноту
                       </Button>
                       {completeness !== null && (
                         <Alert>
@@ -300,12 +299,12 @@ export default function Lab4() {
                             {completeness ? (
                               <>
                                 <CheckCircle2 className="h-4 w-4 text-green-600" />{" "}
-                                Graph is complete
+                                Граф полный
                               </>
                             ) : (
                               <>
                                 <XCircle className="h-4 w-4 text-red-600" />{" "}
-                                Graph is not complete
+                                Граф не является полным
                               </>
                             )}
                           </AlertDescription>
@@ -319,7 +318,7 @@ export default function Lab4() {
                         disabled={!graph}
                         className="w-full"
                       >
-                        Check Connectivity
+                        Проверить связность
                       </Button>
                       {connectivity !== null && (
                         <Alert>
@@ -327,12 +326,12 @@ export default function Lab4() {
                             {connectivity ? (
                               <>
                                 <CheckCircle2 className="h-4 w-4 text-green-600" />{" "}
-                                Graph is connected
+                                Граф связный
                               </>
                             ) : (
                               <>
                                 <XCircle className="h-4 w-4 text-red-600" />{" "}
-                                Graph is not connected
+                                Граф несвязный
                               </>
                             )}
                           </AlertDescription>
@@ -346,7 +345,7 @@ export default function Lab4() {
                         disabled={!graph}
                         className="w-full"
                       >
-                        Check Bipartiteness
+                        Проверить двудольность
                       </Button>
                       {bipartiteness && (
                         <Alert>
@@ -355,12 +354,12 @@ export default function Lab4() {
                               {bipartiteness.isBipartite ? (
                                 <>
                                   <CheckCircle2 className="h-4 w-4 text-green-600" />{" "}
-                                  Graph is bipartite
+                                  Граф двудольный
                                 </>
                               ) : (
                                 <>
                                   <XCircle className="h-4 w-4 text-red-600" />{" "}
-                                  Graph is not bipartite
+                                  Граф не двудольный
                                 </>
                               )}
                             </div>
@@ -373,7 +372,7 @@ export default function Lab4() {
                                       color === 0 ? "default" : "secondary"
                                     }
                                   >
-                                    V{idx}: {color === 0 ? "Set A" : "Set B"}
+                                    V{idx}: {color === 0 ? "Множество A" : "Множество B"}
                                   </Badge>
                                 ))}
                               </div>
@@ -387,7 +386,7 @@ export default function Lab4() {
                   <TabsContent value="path" className="space-y-4">
                     <div className="grid grid-cols-2 gap-2">
                       <div>
-                        <Label htmlFor="start">Start Vertex</Label>
+                        <Label htmlFor="start">Начальная вершина</Label>
                         <Input
                           id="start"
                           type="number"
@@ -403,7 +402,7 @@ export default function Lab4() {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="end">End Vertex</Label>
+                        <Label htmlFor="end">Конечная вершина</Label>
                         <Input
                           id="end"
                           type="number"
@@ -424,7 +423,7 @@ export default function Lab4() {
                       disabled={!graph}
                       className="w-full"
                     >
-                      Find Shortest Path (A*)
+                      Найти кратчайший путь (A*)
                     </Button>
                     {shortestPath && (
                       <Alert>
@@ -432,7 +431,7 @@ export default function Lab4() {
                           {shortestPath.path.length > 0 ? (
                             <>
                               <div className="font-semibold mb-2">
-                                Path found!
+                                Путь найден!
                               </div>
                               <div className="flex items-center gap-2 flex-wrap mb-2">
                                 {shortestPath.path.map((vertex, idx) => (
@@ -445,13 +444,13 @@ export default function Lab4() {
                                 ))}
                               </div>
                               <div className="text-sm">
-                                Total cost: <strong>{shortestPath.cost}</strong>
+                                Суммарная стоимость: <strong>{shortestPath.cost}</strong>
                               </div>
                             </>
                           ) : (
                             <div className="flex items-center gap-2">
-                              <XCircle className="h-4 w-4 text-red-600" /> No
-                              path exists
+                              <XCircle className="h-4 w-4 text-red-600" /> Путь
+                              не существует
                             </div>
                           )}
                         </AlertDescription>
@@ -465,7 +464,7 @@ export default function Lab4() {
                       disabled={!graph}
                       className="w-full"
                     >
-                      Generate MST (Prim's Algorithm)
+                      Сгенерировать МОД (алгоритм Прима)
                     </Button>
                     {mst && (
                       <Alert>
@@ -473,7 +472,7 @@ export default function Lab4() {
                           {mst.edges.length > 0 ? (
                             <>
                               <div className="font-semibold mb-2">
-                                Minimum Spanning Tree
+                                Минимальное остовное дерево
                               </div>
                               <div className="space-y-1 mb-2">
                                 {mst.edges.map((edge, idx) => (
@@ -481,19 +480,19 @@ export default function Lab4() {
                                     key={idx}
                                     className="text-sm bg-muted p-2 rounded"
                                   >
-                                    {edge.from} ↔ {edge.to} (weight:{" "}
+                                    {edge.from} ↔ {edge.to} (вес:{" "}
                                     {edge.weight})
                                   </div>
                                 ))}
                               </div>
                               <div className="text-sm font-semibold">
-                                Total weight: {mst.totalWeight}
+                                Суммарный вес: {mst.totalWeight}
                               </div>
                             </>
                           ) : (
                             <div className="flex items-center gap-2">
-                              <XCircle className="h-4 w-4 text-red-600" /> Graph
-                              is not connected
+                              <XCircle className="h-4 w-4 text-red-600" /> Граф
+                              несвязный
                             </div>
                           )}
                         </AlertDescription>
@@ -507,40 +506,40 @@ export default function Lab4() {
             {/* Theory Card */}
             <Card>
               <CardHeader>
-                <CardTitle>Theory</CardTitle>
+                <CardTitle>Теория</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-sm">
                 <div>
-                  <strong className="text-foreground">Complete Graph:</strong>
+                  <strong className="text-foreground">Полный граф:</strong>
                   <p className="text-muted-foreground">
-                    Every vertex is connected to every other vertex
+                    Каждая вершина соединена с каждой другой вершиной
                   </p>
                 </div>
                 <div>
-                  <strong className="text-foreground">Connected Graph:</strong>
+                  <strong className="text-foreground">Связный граф:</strong>
                   <p className="text-muted-foreground">
-                    There exists a path between any two vertices
+                    Между любыми двумя вершинами существует путь
                   </p>
                 </div>
                 <div>
-                  <strong className="text-foreground">Bipartite Graph:</strong>
+                  <strong className="text-foreground">Двудольный граф:</strong>
                   <p className="text-muted-foreground">
-                    Vertices can be divided into two sets with no edges within
-                    sets
+                    Вершины можно разделить на два множества без рёбер внутри
+                    множеств
                   </p>
                 </div>
                 <div>
-                  <strong className="text-foreground">A* Algorithm:</strong>
+                  <strong className="text-foreground">Алгоритм A*:</strong>
                   <p className="text-muted-foreground">
-                    Finds shortest path using heuristic-based search
+                    Находит кратчайший путь с помощью эвристического поиска
                   </p>
                 </div>
                 <div>
                   <strong className="text-foreground">
-                    MST (Minimum Spanning Tree):
+                    МОД (минимальное остовное дерево):
                   </strong>
                   <p className="text-muted-foreground">
-                    Connects all vertices with minimum total edge weight
+                    Соединяет все вершины с минимальным суммарным весом рёбер
                   </p>
                 </div>
               </CardContent>
