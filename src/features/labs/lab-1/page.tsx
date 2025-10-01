@@ -113,22 +113,54 @@ function sortDictionariesByKey<
   T extends Record<string, string | number>,
   K extends keyof T
 >(data: T[], key: K, ascending = true): T[] {
-  return [...data].sort((a, b) => {
-    const aValue = a[key] as T[K];
-    const bValue = b[key] as T[K];
+  const arrayToSort = [...data];
+
+  if (arrayToSort.length <= 1) {
+    return arrayToSort;
+  }
+
+  function compare(a: T, b: T): boolean {
+    const aValue = a[key];
+    const bValue = b[key];
 
     if (typeof aValue === "string" && typeof bValue === "string") {
-      return ascending
-        ? aValue.localeCompare(bValue)
-        : bValue.localeCompare(aValue);
+      const comparison = aValue.localeCompare(bValue);
+      return ascending ? comparison < 0 : comparison > 0;
     }
 
-    if (ascending) {
-      return (aValue as unknown as number) - (bValue as unknown as number);
-    } else {
-      return (bValue as unknown as number) - (aValue as unknown as number);
+    const numA = aValue as number;
+    const numB = bValue as number;
+
+    return ascending ? numA < numB : numB < numA;
+  }
+
+  function partition(arr: T[], low: number, high: number): number {
+    const pivot = arr[high];
+    let i = low - 1;
+
+    for (let j = low; j < high; j++) {
+      if (compare(arr[j], pivot)) {
+        i++;
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
     }
-  });
+
+    [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+    return i + 1;
+  }
+
+  function quickSortRecursive(arr: T[], low: number, high: number) {
+    if (low < high) {
+      const pi = partition(arr, low, high);
+
+      quickSortRecursive(arr, low, pi - 1);
+      quickSortRecursive(arr, pi + 1, high);
+    }
+  }
+
+  quickSortRecursive(arrayToSort, 0, arrayToSort.length - 1);
+
+  return arrayToSort;
 }
 
 export default function Lab1() {
