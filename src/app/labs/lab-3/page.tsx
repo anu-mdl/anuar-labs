@@ -1,4 +1,4 @@
-import Lab3 from "@/features/lab-3/page";
+import Lab3 from "@/features/labs/lab-3/page";
 
 const Lab3Page = () => {
   return <Lab3 />;
