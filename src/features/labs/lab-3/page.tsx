@@ -92,7 +92,7 @@ export default function Lab3() {
           ", "
         )}]`,
       ]);
-    } catch (error) {
+    } catch {
       setLog(["Error: Please enter valid comma-separated integers"]);
     }
   };

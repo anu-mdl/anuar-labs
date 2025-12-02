@@ -143,7 +143,8 @@ export function findShortestPathAStar(
   goal: number
 ): { path: number[]; cost: number } {
   // Simple heuristic: always return 0 (makes it equivalent to Dijkstra's)
-  const heuristic = (vertex: number) => 0;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const heuristic = (_vertex: number) => 0;
 
   const openSet = new Set([start]);
   const cameFrom = new Map<number, number>();

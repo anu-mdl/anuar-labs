@@ -129,8 +129,7 @@ class HashTable {
 
 // Calculate hash step by step for visualization
 function calculateHashSteps(
-  key: string,
-  tableSize: number
+  key: string
 ): { char: string; ascii: number; cube: number }[] {
   const steps: { char: string; ascii: number; cube: number }[] = [];
   for (let i = 0; i < key.length; i++) {
@@ -167,7 +166,7 @@ export default function Lab7Page() {
 
   const handleInsert = () => {
     if (!key.trim() || !value.trim()) return;
-    const steps = calculateHashSteps(key, hashTable.getSize());
+    const steps = calculateHashSteps(key);
     setHashSteps(steps);
     const result = hashTable.insert(key, value);
     setBuckets(hashTable.getBuckets());
@@ -183,7 +182,7 @@ export default function Lab7Page() {
 
   const handleSearch = () => {
     if (!searchKey.trim()) return;
-    const steps = calculateHashSteps(searchKey, hashTable.getSize());
+    const steps = calculateHashSteps(searchKey);
     setHashSteps(steps);
     const result = hashTable.search(searchKey);
     setSearchResult({
@@ -385,19 +384,19 @@ export default function Lab7Page() {
 
               <div className="mt-6 p-6 bg-muted/30 rounded-lg">
                 <h3 className="font-medium text-foreground mb-4">
-                  Пример: hash("cat") с размером таблицы 11
+                  Пример: hash(&quot;cat&quot;) с размером таблицы 11
                 </h3>
                 <div className="space-y-2 font-mono text-sm">
                   <p className="text-muted-foreground">
-                    'c' = 99 → 99³ ={" "}
+                    &apos;c&apos; = 99 → 99³ ={" "}
                     <span className="text-foreground">970,299</span>
                   </p>
                   <p className="text-muted-foreground">
-                    'a' = 97 → 97³ ={" "}
+                    &apos;a&apos; = 97 → 97³ ={" "}
                     <span className="text-foreground">912,673</span>
                   </p>
                   <p className="text-muted-foreground">
-                    't' = 116 → 116³ ={" "}
+                    &apos;t&apos; = 116 → 116³ ={" "}
                     <span className="text-foreground">1,560,896</span>
                   </p>
                   <p className="text-muted-foreground mt-4">
@@ -405,7 +404,7 @@ export default function Lab7Page() {
                     <span className="text-foreground">3,443,868</span>
                   </p>
                   <p className="text-foreground mt-2">
-                    hash("cat") = 3,443,868 mod 11 ={" "}
+                    hash(&quot;cat&quot;) = 3,443,868 mod 11 ={" "}
                     <span className="text-primary font-bold">5</span>
                   </p>
                 </div>
@@ -639,7 +638,7 @@ export default function Lab7Page() {
                         {hashSteps.map((step, i) => (
                           <tr key={i} className="border-b border-border/50">
                             <td className="py-2 px-3 font-mono">
-                              '{step.char}'
+                              &apos;{step.char}&apos;
                             </td>
                             <td className="py-2 px-3 font-mono">
                               {step.ascii}
@@ -694,7 +693,7 @@ export default function Lab7Page() {
                       {lastOperation.type.toUpperCase()}
                     </Badge>
                     <span className="text-muted-foreground">
-                      Key "{lastOperation.key}" → Bucket [{lastOperation.index}]
+                      Key &quot;{lastOperation.key}&quot; → Bucket [{lastOperation.index}]
                     </span>
                     {lastOperation.isCollision && (
                       <Badge
@@ -729,10 +728,10 @@ export default function Lab7Page() {
                       </div>
                       <p className="text-sm text-muted-foreground">
                         Находится в корзине [{searchResult.index}] после{" "}
-                        {searchResult.steps}{" "}
-                        {searchResult.steps === 1
+                        {searchResult.steps ?? 0}{" "}
+                        {(searchResult.steps ?? 0) === 1
                           ? "шага"
-                          : searchResult.steps < 5
+                          : (searchResult.steps ?? 0) < 5
                           ? "шагов"
                           : "шагов"}{" "}
                         в цепочке
